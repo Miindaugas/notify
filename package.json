@@ -6,8 +6,8 @@
   "main": "notify.js",
   "scripts": {
     "start": "node start.js",
-    "test": "jest --detectOpenHandles",
-    "coverage": "jest ---coverage "
+    "test": "jest",
+    "coverage": "jest ---coverage --coverageReporters=json-summary"
   },
   "author": "Mindaugas Dangveckis",
   "license": "ISC",
