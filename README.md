@@ -9,7 +9,7 @@ Send notifications to Slack, Microsoft Teams when your website goes down.
 
 ```yml
 # ./config.js
-services: [ "http://localhost:3000" ],
+services: [ "https://example.com" ],
 slackWebhook: "https://hooks.slack.com/services/<TOKEN>",
 microsoftTeamsWebhook: "https://outlook.office.com/webhook/<TOKEN>",
 serviceUpMessage: "Service available",
