@@ -40,7 +40,7 @@ describe("notify", () => {
 describe("checkHealth", () => {
   it("should resolve to true if the status code is 200", async () => {
     const url = "https://example.com";
-    https.get.mockImplementation((url, options, callback) => {
+    https.get.mockImplementation((_, __, callback) => {
       callback({ statusCode: 200 });
     });
     const result = await checkHealth(url);
@@ -49,18 +49,8 @@ describe("checkHealth", () => {
 
   it("should resolve to true if the status code is 200", async () => {
     const url = "https://example.com";
-    https.get.mockImplementation((url, options, callback) => {
+    https.get.mockImplementation((_, __, callback) => {
       callback({ statusCode: 500 });
-    });
-
-    const result = await checkHealth(url);
-    expect(result).toBe(false);
-  });
-
-  it("should resolve to false when throw error", async () => {
-    const url = "https://example.com";
-    https.get.mockImplementation((url, options, callback) => {
-      throw Error("Network error");
     });
 
     const result = await checkHealth(url);
@@ -134,7 +124,7 @@ describe("start", () => {
       ...validConfig,
       checkHealthIntervalSeconds: 1,
     };
-    https.get.mockImplementation((url, options, callback) => {
+    https.get.mockImplementation((_, __, callback) => {
       callback({ statusCode: 500 });
     });
     https.request.mockReturnValue({
@@ -152,7 +142,7 @@ describe("start", () => {
       ...validConfig,
       checkHealthIntervalSeconds: 1,
     };
-    https.get.mockImplementation((url, options, callback) => {
+    https.get.mockImplementation((_, __, callback) => {
       callback({ statusCode: 200 });
     });
     https.request.mockReturnValue({

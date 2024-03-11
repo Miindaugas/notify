@@ -4,7 +4,7 @@ const config = {
   microsoftTeamsWebhook: null,
   serviceUpMessage: null,
   serviceDownMessage: null,
-  checkHealthIntervalSeconds: 30,
+  checkHealthIntervalSeconds: 60,
 };
 
 module.exports = config;

@@ -5,7 +5,7 @@
   "description": "Send notifications to slack/microsoft teams when your website goes down",
   "main": "notify.js",
   "scripts": {
-    "start": "node start.js",
+    "start": "node src/start.js",
     "test": "jest"
   },
   "author": "Mindaugas Dangveckis",

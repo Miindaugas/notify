@@ -2,28 +2,31 @@ const https = require("https");
 
 const notify = (webhooks, message) => {
   for (const webhook of webhooks) {
-    const data = JSON.stringify({ text: message });
-    const options = {
-      method: "POST",
-      header: {
-        "Content-Type": "application/json",
-      },
-    };
-    const request = https.request(webhook, options);
-    request.write(data);
-    request.end();
+    try {
+      const data = JSON.stringify({ text: message });
+      const options = {
+        method: "POST",
+        header: {
+          "Content-Type": "application/json",
+        },
+      };
+      const request = https.request(webhook, options);
+      request.write(data);
+      request.end();
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
 const checkHealth = (url, timeout = 5000) => {
   return new Promise((resolve) => {
-    try {
-      const request = https.get(url, { timeout }, (res) => {
+    https
+      .get(url, { timeout }, (res) => {
         resolve(res.statusCode === 200);
-      });
-    } catch {
-      resolve(false);
-    }
+      })
+      .on("error", () => resolve(false))
+      .on("timeout", () => resolve(false));
   });
 };
 
