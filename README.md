@@ -1,1 +1,4 @@
-[![cov](https://<you>.github.io/<repo>/badges/coverage.svg)](https://github.com/<you>/<repo>/actions)
+# Notify
+
+[![tests](https://github.com/Miindaugas/notifiy/workflows/main.yml/badge.svg)](https://github.com/Miindaugas/notifiy/actions/workflows/main.yml)
+
